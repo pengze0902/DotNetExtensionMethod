@@ -36,40 +36,103 @@ namespace BasicMmethodExtensionClass.EncryptHelper
         /// <returns></returns>
         public static string AES_decrypt(string input, string encodingAesKey, ref string corpid)
         {
-            if (corpid == null) throw new ArgumentNullException(corpid);
-            var key = Convert.FromBase64String(encodingAesKey + "=");
-            var iv = new byte[16];
-            Array.Copy(key, iv, 16);
-            var btmpMsg = AES_decrypt(input, iv, key);
-            var len = BitConverter.ToInt32(btmpMsg, 16);
-            len = IPAddress.NetworkToHostOrder(len);
-            var bMsg = new byte[len];
-            var bCorpid = new byte[btmpMsg.Length - 20 - len];
-            Array.Copy(btmpMsg, 20, bMsg, 0, len);
-            Array.Copy(btmpMsg, 20+len , bCorpid, 0, btmpMsg.Length - 20 - len);
-            var oriMsg = Encoding.UTF8.GetString(bMsg);
-            corpid = Encoding.UTF8.GetString(bCorpid);           
-            return oriMsg;
+            if (string.IsNullOrEmpty(input))
+            {
+                throw new ArgumentNullException(input);
+            }
+            if (string.IsNullOrEmpty(encodingAesKey))
+            {
+                throw new ArgumentNullException(encodingAesKey);
+            }
+            if (corpid == null)
+            {
+                throw new ArgumentNullException(corpid);
+            }
+            try
+            {
+                var key = Convert.FromBase64String(encodingAesKey + "=");
+                var iv = new byte[16];
+                Array.Copy(key, iv, 16);
+                var btmpMsg = AES_decrypt(input, iv, key);
+                var len = BitConverter.ToInt32(btmpMsg, 16);
+                len = IPAddress.NetworkToHostOrder(len);
+                var bMsg = new byte[len];
+                var bCorpid = new byte[btmpMsg.Length - 20 - len];
+                Array.Copy(btmpMsg, 20, bMsg, 0, len);
+                Array.Copy(btmpMsg, 20 + len, bCorpid, 0, btmpMsg.Length - 20 - len);
+                var oriMsg = Encoding.UTF8.GetString(bMsg);
+                corpid = Encoding.UTF8.GetString(bCorpid);
+                return oriMsg;
+            }
+            catch (ArgumentNullException auex)
+            {
+                throw auex;
+            }
+            catch (FormatException fmex)
+            {
+                throw fmex;
+            }
+            catch (ArgumentException agex)
+            {
+                throw agex;
+            }
+
         }
 
-
+        /// <summary>
+        /// 加密方法
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="encodingAesKey"></param>
+        /// <param name="corpid"></param>
+        /// <returns></returns>
         public static string AES_encrypt(string input, string encodingAesKey, string corpid)
         {
-            var key = Convert.FromBase64String(encodingAesKey + "=");
-            var iv = new byte[16];
-            Array.Copy(key, iv, 16);
-            var randcode = CreateRandCode(16);
-            var bRand = Encoding.UTF8.GetBytes(randcode);
-            var bCorpid = Encoding.UTF8.GetBytes(corpid);
-            var btmpMsg = Encoding.UTF8.GetBytes(input);
-            var bMsgLen = BitConverter.GetBytes(HostToNetworkOrder(btmpMsg.Length));
-            var bMsg = new byte[bRand.Length + bMsgLen.Length + bCorpid.Length + btmpMsg.Length];
-            Array.Copy(bRand, bMsg, bRand.Length);
-            Array.Copy(bMsgLen, 0, bMsg, bRand.Length, bMsgLen.Length);
-            Array.Copy(btmpMsg, 0, bMsg, bRand.Length + bMsgLen.Length, btmpMsg.Length);
-            Array.Copy(bCorpid, 0, bMsg, bRand.Length + bMsgLen.Length + btmpMsg.Length, bCorpid.Length);  
-            return AES_encrypt(bMsg, iv, key);
-
+            if (string.IsNullOrEmpty(input))
+            {
+                throw new ArgumentNullException(input);
+            }
+            if (string.IsNullOrEmpty(encodingAesKey))
+            {
+                throw new ArgumentNullException(encodingAesKey);
+            }
+            if (string.IsNullOrEmpty(corpid))
+            {
+                throw new ArgumentNullException(corpid);
+            }
+            try
+            {
+                var key = Convert.FromBase64String(encodingAesKey + "=");
+                var iv = new byte[16];
+                Array.Copy(key, iv, 16);
+                var randcode = CreateRandCode(16);
+                var bRand = Encoding.UTF8.GetBytes(randcode);
+                var bCorpid = Encoding.UTF8.GetBytes(corpid);
+                var btmpMsg = Encoding.UTF8.GetBytes(input);
+                var bMsgLen = BitConverter.GetBytes(HostToNetworkOrder(btmpMsg.Length));
+                var bMsg = new byte[bRand.Length + bMsgLen.Length + bCorpid.Length + btmpMsg.Length];
+                Array.Copy(bRand, bMsg, bRand.Length);
+                Array.Copy(bMsgLen, 0, bMsg, bRand.Length, bMsgLen.Length);
+                Array.Copy(btmpMsg, 0, bMsg, bRand.Length + bMsgLen.Length, btmpMsg.Length);
+                Array.Copy(bCorpid, 0, bMsg, bRand.Length + bMsgLen.Length + btmpMsg.Length, bCorpid.Length);
+                return AES_encrypt(bMsg, iv, key);
+            }
+            catch (FormatException)
+            {
+                return "参数格式错误";
+            }
+            catch (EncoderFallbackException)
+            {
+                return "编码不正确";
+            }
+            catch (RankException)
+            {
+                return "数组将维时发生错误";
+            }
+            catch (InvalidCastException)
+            {
+                return "类型转换时发生异常";
+            }
         }
         private static string CreateRandCode(int codeLen)
         {
@@ -137,11 +200,11 @@ namespace BasicMmethodExtensionClass.EncryptHelper
             var encrypt = aes.CreateEncryptor(aes.Key, aes.IV);
             byte[] xBuff = null;
 
-           // 自己进行PKCS7补位，用系统自己带的不行
+            // 自己进行PKCS7补位，用系统自己带的不行
             byte[] msg = new byte[input.Length + 32 - input.Length % 32];
             Array.Copy(input, msg, input.Length);
             byte[] pad = Kcs7Encoder(input.Length);
-            Array.Copy(pad, 0, msg, input.Length, pad.Length);           
+            Array.Copy(pad, 0, msg, input.Length, pad.Length);
             //ICryptoTransform transform = aes.CreateEncryptor();
             //byte[] xBuff = transform.TransformFinalBlock(msg, 0, msg.Length);
             using (var ms = new MemoryStream())

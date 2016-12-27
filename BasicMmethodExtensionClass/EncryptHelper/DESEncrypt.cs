@@ -9,7 +9,7 @@ namespace BasicMmethodExtensionClass.EncryptHelper
     /// </summary>
     public class DesEncrypt
     {
-        private static readonly string KEY = "pengze0902";
+        private static readonly string KEY = "";
 
         /// <summary>
         /// º”√‹

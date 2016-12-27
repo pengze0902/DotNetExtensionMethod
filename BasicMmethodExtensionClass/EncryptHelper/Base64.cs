@@ -30,7 +30,7 @@ namespace BasicMmethodExtensionClass.EncryptHelper
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
 
         }
@@ -54,7 +54,7 @@ namespace BasicMmethodExtensionClass.EncryptHelper
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -79,7 +79,7 @@ namespace BasicMmethodExtensionClass.EncryptHelper
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
 
         }
@@ -103,7 +103,7 @@ namespace BasicMmethodExtensionClass.EncryptHelper
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
     }
