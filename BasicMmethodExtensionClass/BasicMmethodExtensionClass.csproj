@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -64,6 +65,13 @@
     <Compile Include="IOHelper\FileOrDirHelper\INIFile.cs" />
     <Compile Include="IOHelper\FileOrDirHelper\FileOrDirOperationHelper.cs" />
     <Compile Include="IOHelper\FileOrDirHelper\KillFileHelper.cs" />
+    <Compile Include="IOHelper\StreamHelper\NsStream\ByteBuilder.cs" />
+    <Compile Include="IOHelper\StreamHelper\NsStream\ByteConverter.cs" />
+    <Compile Include="IOHelper\StreamHelper\NsStream\ByteRange.cs" />
+    <Compile Include="IOHelper\StreamHelper\NsStream\Endians.cs" />
+    <Compile Include="IOHelper\StreamHelper\NsStream\IByteRange.cs" />
+    <Compile Include="IOHelper\StreamHelper\NsStream\INsStream.cs" />
+    <Compile Include="IOHelper\StreamHelper\NsStream\NsStream.cs" />
     <Compile Include="JavaScriptOperationHelper\JsArrayBuilder.cs" />
     <Compile Include="JavaScriptOperationHelper\JsHelper.cs" />
     <Compile Include="JavaScriptOperationHelper\JsObjectBuilder.cs" />
