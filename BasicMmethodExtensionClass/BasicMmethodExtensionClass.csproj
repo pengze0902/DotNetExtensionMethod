@@ -31,12 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FileCache, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FileCache.2.0.1\lib\FileCache.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -47,6 +52,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheOperationHelper\CacheHelper\CacheHelper.cs" />
+    <Compile Include="CacheOperationHelper\CacheHelper\CacheOperationHelper.cs" />
+    <Compile Include="CacheOperationHelper\CacheHelper\CacheUtility.cs" />
+    <Compile Include="CacheOperationHelper\CacheHelper\Cookie.cs" />
+    <Compile Include="CacheOperationHelper\CacheHelper\FlushCache.cs" />
+    <Compile Include="CacheOperationHelper\CacheHelper\InMemoryThrottleStore.cs" />
+    <Compile Include="CacheOperationHelper\CacheHelper\IThrottleStore.cs" />
+    <Compile Include="CacheOperationHelper\CacheHelper\MemoryCache.cs" />
+    <Compile Include="CacheOperationHelper\CacheHelper\NamedLock.cs" />
+    <Compile Include="CacheOperationHelper\CacheHelper\Session.cs" />
+    <Compile Include="CacheOperationHelper\CacheHelper\ThreadHelper\SenparcMessageQueue.cs" />
+    <Compile Include="CacheOperationHelper\CacheHelper\ThreadHelper\SenparcMessageQueueItem.cs" />
+    <Compile Include="CacheOperationHelper\CacheHelper\ThreadHelper\SenparcMessageQueueThreadUtility.cs" />
+    <Compile Include="CacheOperationHelper\CacheHelper\ThreadHelper\ThreadUtility.cs" />
+    <Compile Include="CacheOperationHelper\CacheHelper\ThrottleEntry.cs" />
+    <Compile Include="CacheOperationHelper\Caching\ICache.cs" />
+    <Compile Include="CacheOperationHelper\Caching\RuntimeMemoryCache.cs" />
     <Compile Include="EncryptHelper\Base64.cs" />
     <Compile Include="EncryptHelper\Cryptography.cs" />
     <Compile Include="EncryptHelper\DESEncrypt.cs" />
