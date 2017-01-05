@@ -31,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\xjhDapper.1.0.0\lib\Dapper.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="FileCache, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FileCache.2.0.1\lib\FileCache.dll</HintPath>
@@ -44,6 +43,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Security" />
@@ -81,9 +81,18 @@
     <Compile Include="CacheOperationHelper\CacheHelper\ThrottleEntry.cs" />
     <Compile Include="CacheOperationHelper\Caching\ICache.cs" />
     <Compile Include="CacheOperationHelper\Caching\RuntimeMemoryCache.cs" />
-    <Compile Include="DBHelper\Dapper.Net\BusinessBasecs.cs" />
-    <Compile Include="DBHelper\Dapper.Net\DapperEx.cs" />
-    <Compile Include="DBHelper\Dapper.Net\DataAccessBase.cs" />
+    <Compile Include="DBHelper\DapperForNet\Attributes\BaseAttribute.cs" />
+    <Compile Include="DBHelper\DapperForNet\Common.cs" />
+    <Compile Include="DBHelper\DapperForNet\CustomDynamicBuilder.cs" />
+    <Compile Include="DBHelper\DapperForNet\DapperEx.cs" />
+    <Compile Include="DBHelper\DapperForNet\DbBase.cs" />
+    <Compile Include="DBHelper\DapperForNet\DynamicPropertyModel.cs" />
+    <Compile Include="DBHelper\DapperForNet\ModelDes.cs" />
+    <Compile Include="DBHelper\DapperForNet\ParamColumnModel.cs" />
+    <Compile Include="DBHelper\DapperForNet\SqlMapper.cs" />
+    <Compile Include="DBHelper\DapperForNet\SQL\OperationMethod.cs" />
+    <Compile Include="DBHelper\DapperForNet\SQL\QueryOrder.cs" />
+    <Compile Include="DBHelper\DapperForNet\SQL\SqlQuery.cs" />
     <Compile Include="EncryptHelper\Base64.cs" />
     <Compile Include="EncryptHelper\Cryptography.cs" />
     <Compile Include="EncryptHelper\DESEncrypt.cs" />
