@@ -23,6 +23,11 @@ namespace BasicMmethodExtensionWeb
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angularjs").Include(
+                      "~/angular-1.6.1/angular-{version}.js",
+                      "~/angular-1.6.1/angular-message*",
+                      "~/angular-1.6.1/angular.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
