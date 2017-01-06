@@ -52,6 +52,10 @@
       <HintPath>..\packages\BouncyCastle.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -241,6 +245,7 @@
     <Compile Include="Helper\ConfigHelper.cs" />
     <Compile Include="Helper\DnsAnalysis.cs" />
     <Compile Include="Helper\IPHelp.cs" />
+    <Compile Include="Helper\Log4Helper.cs" />
     <Compile Include="Helper\ThoughtWorksQRCodeHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -2785,6 +2790,8 @@
     <Content Include="angular-1.6.1\version.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="DLL\log4net.dll" />
+    <Content Include="DLL\log4net.xml" />
     <Content Include="DLL\ThoughtWorks.QRCode.dll" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -3045,6 +3052,7 @@
     <Content Include="angular-1.6.1\docs\js\search-worker.min.js.map" />
     <Content Include="angular-1.6.1\errors.json" />
     <Content Include="angular-1.6.1\version.json" />
+    <Content Include="log4net.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -3095,6 +3103,7 @@
   <ItemGroup>
     <Folder Include="angular-1.6.1\i18n\ngLocale\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Log\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

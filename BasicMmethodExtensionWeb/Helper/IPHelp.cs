@@ -2,7 +2,7 @@
 using System.Net;
 using System.Web;
 
-namespace Helper.NetWork
+namespace BasicMmethodExtensionWeb.Helper
 {
     /// <summary>
     /// 和IP有关的类

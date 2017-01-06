@@ -5,30 +5,49 @@ namespace BasicMmethodExtensionWeb.Helper
 {
     public class ComputerOperationHelper
     {
-        //1.cpu序列号
+        /// <summary>
+        /// cpu序列号
+        /// </summary>
         public static string CpuId;
 
-        //2.mac序列号
+        /// <summary>
+        /// mac序列号
+        /// </summary>
         public static string MacAddress;
 
-        //3.硬盘id
+        /// <summary>
+        /// 硬盘id
+        /// </summary>
         public static string DiskId;
 
-        //4.ip地址
+        /// <summary>
+        /// ip地址
+        /// </summary>
         public static string IpAddress;
 
-        //5.登录用户名
+        /// <summary>
+        /// 登录用户名
+        /// </summary>
         public static string LoginUserName;
 
-        //6.计算机名
+        /// <summary>
+        /// 计算机名
+        /// </summary>
         public static string ComputerName;
 
-        //7.系统类型
+        /// <summary>
+        /// 系统类型
+        /// </summary>
         public static string SystemType;
 
-        //8.内存量 单位：M
+        /// <summary>
+        /// 内存量 单位：M
+        /// </summary>
         public static string TotalPhysicalMemory;
 
+        /// <summary>
+        /// 类型构造函数
+        /// </summary>
         static ComputerOperationHelper()
         {
             CpuId = GetCpuId();
@@ -42,7 +61,10 @@ namespace BasicMmethodExtensionWeb.Helper
         }
 
 
-        //1.获取CPU序列号代码 
+        /// <summary>
+        /// 获取CPU序列号代码 
+        /// </summary>
+        /// <returns></returns>
         public static string GetCpuId()
         {
             try
@@ -65,7 +87,10 @@ namespace BasicMmethodExtensionWeb.Helper
 
         }
 
-        //2.获取网卡硬件地址 
+        /// <summary>
+        /// 获取网卡硬件地址 
+        /// </summary>
+        /// <returns></returns>
         public static string GetMacAddress()
         {
             try
@@ -89,7 +114,10 @@ namespace BasicMmethodExtensionWeb.Helper
 
         }
 
-        //3.获取硬盘ID 
+        /// <summary>
+        /// 获取硬盘ID 
+        /// </summary>
+        /// <returns></returns>
         public static string GetDiskId()
         {
             try
@@ -112,7 +140,10 @@ namespace BasicMmethodExtensionWeb.Helper
         }
 
 
-        //4.获取IP地址 
+        /// <summary>
+        /// 获取IP地址 
+        /// </summary>
+        /// <returns></returns>
         public static string GetIpAddress()
         {
             try
@@ -137,7 +168,10 @@ namespace BasicMmethodExtensionWeb.Helper
 
         }
 
-        /// 5.操作系统的登录用户名 
+        /// <summary>
+        /// 操作系统的登录用户名 
+        /// </summary>
+        /// <returns></returns>
         public static string GetUserName()
         {
             try
@@ -154,7 +188,10 @@ namespace BasicMmethodExtensionWeb.Helper
 
 
 
-        //6.获取计算机名
+        /// <summary>
+        /// 获取计算机名
+        /// </summary>
+        /// <returns></returns>
         static string GetComputerName()
         {
             try
@@ -169,7 +206,10 @@ namespace BasicMmethodExtensionWeb.Helper
 
 
 
-        ///7 PC类型 
+        /// <summary>
+        /// PC类型 
+        /// </summary>
+        /// <returns></returns>
         public static string GetSystemType()
         {
             try
@@ -191,8 +231,10 @@ namespace BasicMmethodExtensionWeb.Helper
         }
 
 
-
-        ///8.物理内存        
+        /// <summary>
+        /// 物理内存 
+        /// </summary>
+        /// <returns></returns>        
         public static string GetTotalPhysicalMemory()
         {
             try
