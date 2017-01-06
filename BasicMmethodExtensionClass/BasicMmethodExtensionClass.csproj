@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
-    </Reference>
     <Reference Include="FileCache, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FileCache.2.0.1\lib\FileCache.dll</HintPath>
       <Private>True</Private>
@@ -45,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
@@ -81,6 +79,7 @@
     <Compile Include="CacheOperationHelper\CacheHelper\ThrottleEntry.cs" />
     <Compile Include="CacheOperationHelper\Caching\ICache.cs" />
     <Compile Include="CacheOperationHelper\Caching\RuntimeMemoryCache.cs" />
+    <Compile Include="ComputerHelper\ComputerOperationHelper.cs" />
     <Compile Include="DBHelper\DapperForNet\Attributes\BaseAttribute.cs" />
     <Compile Include="DBHelper\DapperForNet\Common.cs" />
     <Compile Include="DBHelper\DapperForNet\CustomDynamicBuilder.cs" />
