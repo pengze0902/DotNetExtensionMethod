@@ -69,19 +69,24 @@ namespace BasicMmethodExtensionWeb.Helper
             }
             try
             {
-                if (!System.IO.File.Exists(filePath))
+                if (!File.Exists(filePath))
+                {
                     return null;
+                }                 
                 var myBitmap = new Bitmap(Image.FromFile(filePath));
                 var decoder = new QRCodeDecoder();
                 var decodedString = decoder.decode(new QRCodeBitmapImage(myBitmap));
                 return decodedString;
             }
-            catch (Exception ex)
+            catch (IOException ioex)
             {
-                throw new Exception(ex.Message);
+                throw ioex;
+            }
+            catch
+            {
+                throw;
             }
         }
-
 
 
         /// <summary>
@@ -95,6 +100,18 @@ namespace BasicMmethodExtensionWeb.Helper
         /// </summary>
         public void CreateCode_Choose(string strData, string qrEncoding, string level, int version, int scale)
         {
+            if (string.IsNullOrEmpty(strData))
+            {
+                throw new ArgumentNullException(strData);
+            }
+            if (string.IsNullOrEmpty(qrEncoding))
+            {
+                throw new ArgumentNullException(qrEncoding);
+            }
+            if (string.IsNullOrEmpty(level))
+            {
+                throw new ArgumentNullException(level);
+            }
             var qrCodeEncoder = new QRCodeEncoder();
             var encoding = qrEncoding;
             switch (encoding)
@@ -143,12 +160,18 @@ namespace BasicMmethodExtensionWeb.Helper
             }
             catch (IOException ex)
             {
-                throw new IOException(ex.Message);
+                throw ex;
             }
             finally
             {
-                if (fs != null) fs.Close();
-                if (image != null) image.Dispose();
+                if (fs != null)
+                {
+                    fs.Close();
+                }
+                if (image != null)
+                {
+                    image.Dispose();
+                }
             }
         }
 

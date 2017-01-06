@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Configuration;
+using System.IO;
 using System.Xml;
+using System.Xml.XPath;
 
 namespace BasicMmethodExtensionWeb.Helper
 {
@@ -57,9 +59,9 @@ namespace BasicMmethodExtensionWeb.Helper
                 config.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("appSettings");
             }
-            catch (Exception ex)
+            catch (ConfigurationErrorsException ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -80,9 +82,9 @@ namespace BasicMmethodExtensionWeb.Helper
                 config.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("appSettings");
             }
-            catch (Exception ex)
+            catch (ConfigurationErrorsException ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -139,9 +141,9 @@ namespace BasicMmethodExtensionWeb.Helper
                 config.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("connectionStrings");
             }
-            catch (Exception ex)
+            catch (ConfigurationErrorsException ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -162,9 +164,9 @@ namespace BasicMmethodExtensionWeb.Helper
                 config.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("connectionStrings");
             }
-            catch (Exception ex)
+            catch (ConfigurationErrorsException ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -236,9 +238,13 @@ namespace BasicMmethodExtensionWeb.Helper
                     xmlwriter.Flush();
                 }
             }
-            catch (Exception ex)
+            catch (XPathException ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
+            }
+            catch (ArgumentException arex)
+            {
+                throw arex;
             }
             return true;
         }
@@ -296,9 +302,17 @@ namespace BasicMmethodExtensionWeb.Helper
                 //保存至配置文件(方式二)
                 doc.Save(filename);
             }
-            catch (Exception ex)
+            catch (XPathException ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
+            }
+            catch (XmlException xmex)
+            {
+                throw xmex;
+            }
+            catch (ArgumentException arex)
+            {
+                throw arex;
             }
             return true;
         }
@@ -332,7 +346,10 @@ namespace BasicMmethodExtensionWeb.Helper
                 if (element != null)
                 {
                     //存在则删除子节点
-                    if (element.ParentNode != null) element.ParentNode.RemoveChild(element);
+                    if (element.ParentNode != null)
+                    {
+                        element.ParentNode.RemoveChild(element);
+                    }
                 }
             }
             try
@@ -345,9 +362,21 @@ namespace BasicMmethodExtensionWeb.Helper
                     xmlwriter.Flush();
                 }
             }
-            catch (Exception ex)
+            catch (XPathException ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
+            }
+            catch (XmlException xmex)
+            {
+                throw xmex;
+            }
+            catch (ArgumentException arex)
+            {
+                throw arex;
+            }
+            catch (IOException ioex)
+            {
+                throw ioex;
             }
             return true;
         }
@@ -389,9 +418,9 @@ namespace BasicMmethodExtensionWeb.Helper
                 //保存至配置文件(方式二)
                 doc.Save(filename);
             }
-            catch (Exception ex)
+            catch (XmlException ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
             return true;
         }

@@ -15,6 +15,10 @@ namespace BasicMmethodExtensionWeb.Helper
         /// <returns>整数</returns>
         public static long Ip2Long(IPAddress ip)
         {
+            if (ip == null)
+            {
+                throw new ArgumentNullException("ip");
+            }
             var x = 3;
             long o = 0;
             foreach (var f in ip.GetAddressBytes())
@@ -49,11 +53,17 @@ namespace BasicMmethodExtensionWeb.Helper
                 string ip;
                 var isErr = false;
                 if (HttpContext.Current.Request.ServerVariables["HTTP_X_ForWARDED_For"] == null)
+                {
                     ip = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+                }
                 else
+                {
                     ip = HttpContext.Current.Request.ServerVariables["HTTP_X_ForWARDED_For"];
+                }
                 if (ip.Length > 15)
+                {
                     isErr = true;
+                }
                 else
                 {
                     var temp = ip.Split('.');
@@ -61,11 +71,16 @@ namespace BasicMmethodExtensionWeb.Helper
                     {
                         for (var i = 0; i < temp.Length; i++)
                         {
-                            if (temp[i].Length > 3) isErr = true;
+                            if (temp[i].Length > 3)
+                            {
+                                isErr = true;
+                            }
                         }
                     }
                     else
+                    {
                         isErr = true;
+                    }
                 }
                 return isErr ? "1.1.1.1" : ip;
             }
@@ -126,14 +141,21 @@ namespace BasicMmethodExtensionWeb.Helper
                     tempIp = all.Substring(start, end - start);
                     sr.Close();
                 }
-                if (s != null) s.Close();
+                if (s != null)
+                {
+                    s.Close();
+                }
             }
             catch
             {
-                if (System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName()).AddressList.Length > 1)
-                    tempIp = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName()).AddressList[1].ToString();
+                if (Dns.GetHostEntry(Dns.GetHostName()).AddressList.Length > 1)
+                {
+                    tempIp = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
+                }
                 if (string.IsNullOrEmpty(tempIp))
+                {
                     return GetIp();
+                }
             }
             return tempIp;
         }
@@ -142,7 +164,7 @@ namespace BasicMmethodExtensionWeb.Helper
         /// 获取客户端IP地址  
         /// </summary>  
         /// <returns></returns>  
-        public  string GetIp()
+        public string GetIp()
         {
             var result = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
             if (string.IsNullOrEmpty(result))
@@ -165,14 +187,20 @@ namespace BasicMmethodExtensionWeb.Helper
         /// <returns>true为相同,false为不同</returns>
         public static bool IsSameIpSectionAs(IPAddress addr1, IPAddress addr2)
         {
+            if (addr1 == null)
+            {
+                throw new ArgumentNullException("addr1");
+            }
+            if (addr2 == null)
+            {
+                throw new ArgumentNullException("addr2");
+            }
             byte[] a1 = addr1.GetAddressBytes();
             byte[] a2 = addr2.GetAddressBytes();
-
             for (int i = 0; i < a1.Length - 1; i++)
             {
                 if (a1[i] != a2[i]) return false;
             }
-
             return true;
         }
 
@@ -182,16 +210,26 @@ namespace BasicMmethodExtensionWeb.Helper
         /// <param name="addr1">要比较的IP地址1</param>
         /// <param name="addr2">要比较的IP地址2</param>
         /// <returns>true为相同,false为不同</returns>
-        public static bool IsSameIpAs( IPAddress addr1, IPAddress addr2)
+        public static bool IsSameIpAs(IPAddress addr1, IPAddress addr2)
         {
+            if (addr1 == null)
+            {
+                throw new ArgumentNullException("addr1");
+            }
+            if (addr2 == null)
+            {
+                throw new ArgumentNullException("addr2");
+            }
             byte[] a1 = addr1.GetAddressBytes();
             byte[] a2 = addr2.GetAddressBytes();
 
             for (int i = 0; i < a1.Length; i++)
             {
-                if (a1[i] != a2[i]) return false;
+                if (a1[i] != a2[i])
+                {
+                    return false;
+                }
             }
-
             return true;
         }
 
@@ -229,6 +267,10 @@ namespace BasicMmethodExtensionWeb.Helper
         /// <remarks></remarks>
         public static uint IpGen(IPAddress ip, bool calcAll)
         {
+            if (ip == null)
+            {
+                throw new ArgumentNullException("ip");
+            }
             byte[] tip = ip.GetAddressBytes();
 
             if (calcAll)
@@ -237,6 +279,7 @@ namespace BasicMmethodExtensionWeb.Helper
             }
             return (((uint)(tip[0])) << 24) + (((uint)(tip[1])) << 16) + (((uint)(tip[2])) << 8);
         }
+
         /// <summary>
         /// 反编码IP
         /// </summary>

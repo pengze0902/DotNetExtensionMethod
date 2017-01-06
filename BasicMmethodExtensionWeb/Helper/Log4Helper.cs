@@ -57,22 +57,20 @@ namespace BasicMmethodExtensionWeb.Helper
         /// <returns></returns>
         public static void Error(string message, Exception ex)
         {
-            if (Logerror.IsErrorEnabled)
+            if (!Logerror.IsErrorEnabled) return;
+            if (!string.IsNullOrEmpty(message) && ex == null)
             {
-                if (!string.IsNullOrEmpty(message) && ex == null)
-                {
-                    Logerror.ErrorFormat("<br/>【附加信息】 : {0}<br>", new object[] { message });
-                }
-                else if (!string.IsNullOrEmpty(message) && ex != null)
-                {
-                    string errorMsg = BeautyErrorMsg(ex);
-                    Logerror.ErrorFormat("<br/>【附加信息】 : {0}<br>{1}", new object[] { message, errorMsg });
-                }
-                else if (string.IsNullOrEmpty(message) && ex != null)
-                {
-                    string errorMsg = BeautyErrorMsg(ex);
-                    Logerror.Error(errorMsg);
-                }
+                Logerror.ErrorFormat("<br/>【附加信息】 : {0}<br>", new object[] { message });
+            }
+            else if (!string.IsNullOrEmpty(message) && ex != null)
+            {
+                string errorMsg = BeautyErrorMsg(ex);
+                Logerror.ErrorFormat("<br/>【附加信息】 : {0}<br>{1}", new object[] { message, errorMsg });
+            }
+            else if (string.IsNullOrEmpty(message) && ex != null)
+            {
+                string errorMsg = BeautyErrorMsg(ex);
+                Logerror.Error(errorMsg);
             }
         }
 
@@ -98,22 +96,20 @@ namespace BasicMmethodExtensionWeb.Helper
         /// <returns></returns>
         public static void Debug(string message, Exception ex)
         {
-            if (Logdebug.IsDebugEnabled)
+            if (!Logdebug.IsDebugEnabled) return;
+            if (!string.IsNullOrEmpty(message) && ex == null)
             {
-                if (!string.IsNullOrEmpty(message) && ex == null)
-                {
-                    Logdebug.DebugFormat("<br/>【附加信息】 : {0}<br>", new object[] { message });
-                }
-                else if (!string.IsNullOrEmpty(message) && ex != null)
-                {
-                    string errorMsg = BeautyErrorMsg(ex);
-                    Logdebug.DebugFormat("<br/>【附加信息】 : {0}<br>{1}", new object[] { message, errorMsg });
-                }
-                else if (string.IsNullOrEmpty(message) && ex != null)
-                {
-                    string errorMsg = BeautyErrorMsg(ex);
-                    Logdebug.Debug(errorMsg);
-                }
+                Logdebug.DebugFormat("<br/>【附加信息】 : {0}<br>", new object[] { message });
+            }
+            else if (!string.IsNullOrEmpty(message) && ex != null)
+            {
+                string errorMsg = BeautyErrorMsg(ex);
+                Logdebug.DebugFormat("<br/>【附加信息】 : {0}<br>{1}", new object[] { message, errorMsg });
+            }
+            else if (string.IsNullOrEmpty(message) && ex != null)
+            {
+                string errorMsg = BeautyErrorMsg(ex);
+                Logdebug.Debug(errorMsg);
             }
         }
 

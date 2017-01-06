@@ -67,23 +67,15 @@ namespace BasicMmethodExtensionWeb.Helper
         /// <returns></returns>
         public static string GetCpuId()
         {
-            try
+            var cpuInfo = string.Empty;
+            var mc = new ManagementClass("Win32_Processor");
+            var moc = mc.GetInstances();
+            foreach (var o in moc)
             {
-                //cpu序列号 
-                var cpuInfo = string.Empty;
-                var mc = new ManagementClass("Win32_Processor");
-                var moc = mc.GetInstances();
-                foreach (var o in moc)
-                {
-                    var mo = (ManagementObject)o;
-                    cpuInfo = mo.Properties["ProcessorId"].Value.ToString();
-                }
-                return cpuInfo;
+                var mo = (ManagementObject)o;
+                cpuInfo = mo.Properties["ProcessorId"].Value.ToString();
             }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return cpuInfo;
 
         }
 
@@ -93,25 +85,20 @@ namespace BasicMmethodExtensionWeb.Helper
         /// <returns></returns>
         public static string GetMacAddress()
         {
-            try
+            var mac = string.Empty;
+            var mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
+            var moc = mc.GetInstances();
+            foreach (var o in moc)
             {
-                var mac = "";
-                var mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
-                var moc = mc.GetInstances();
-                foreach (var o in moc)
+                var mo = (ManagementObject)o;
+                if ((bool)mo["IPEnabled"] != true)
                 {
-                    var mo = (ManagementObject)o;
-                    if ((bool)mo["IPEnabled"] != true) continue;
-                    mac = mo["MacAddress"].ToString();
-                    break;
+                    continue;
                 }
-                return mac;
+                mac = mo["MacAddress"].ToString();
+                break;
             }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-
+            return mac;
         }
 
         /// <summary>
@@ -120,23 +107,16 @@ namespace BasicMmethodExtensionWeb.Helper
         /// <returns></returns>
         public static string GetDiskId()
         {
-            try
-            {
-                var hDid = "";
-                var mc = new ManagementClass("Win32_DiskDrive");
-                var moc = mc.GetInstances();
-                foreach (var o in moc)
-                {
-                    var mo = (ManagementObject)o;
-                    hDid = (string)mo.Properties["Model"].Value;
-                }
-                return hDid;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
 
+            var hDid = string.Empty;
+            var mc = new ManagementClass("Win32_DiskDrive");
+            var moc = mc.GetInstances();
+            foreach (var o in moc)
+            {
+                var mo = (ManagementObject)o;
+                hDid = (string)mo.Properties["Model"].Value;
+            }
+            return hDid;
         }
 
 
@@ -146,26 +126,18 @@ namespace BasicMmethodExtensionWeb.Helper
         /// <returns></returns>
         public static string GetIpAddress()
         {
-            try
+            var st = string.Empty;
+            var mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
+            var moc = mc.GetInstances();
+            foreach (var o in moc)
             {
-                var st = "";
-                var mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
-                var moc = mc.GetInstances();
-                foreach (var o in moc)
-                {
-                    var mo = (ManagementObject)o;
-                    if ((bool)mo["IPEnabled"] != true) continue;
-                    var ar = (Array)(mo.Properties["IpAddress"].Value);
-                    st = ar.GetValue(0).ToString();
-                    break;
-                }
-                return st;
+                var mo = (ManagementObject)o;
+                if ((bool)mo["IPEnabled"] != true) continue;
+                var ar = (Array)(mo.Properties["IpAddress"].Value);
+                st = ar.GetValue(0).ToString();
+                break;
             }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-
+            return st;
         }
 
         /// <summary>
@@ -174,16 +146,8 @@ namespace BasicMmethodExtensionWeb.Helper
         /// <returns></returns>
         public static string GetUserName()
         {
-            try
-            {
-                var un = Environment.UserName;
-                return un;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-
+            var un = Environment.UserName;
+            return un;
         }
 
 
@@ -194,14 +158,7 @@ namespace BasicMmethodExtensionWeb.Helper
         /// <returns></returns>
         static string GetComputerName()
         {
-            try
-            {
-                return Environment.MachineName;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return Environment.MachineName;
         }
 
 
@@ -212,22 +169,15 @@ namespace BasicMmethodExtensionWeb.Helper
         /// <returns></returns>
         public static string GetSystemType()
         {
-            try
+            var st = string.Empty;
+            var mc = new ManagementClass("Win32_ComputerSystem");
+            var moc = mc.GetInstances();
+            foreach (var o in moc)
             {
-                var st = "";
-                var mc = new ManagementClass("Win32_ComputerSystem");
-                var moc = mc.GetInstances();
-                foreach (var o in moc)
-                {
-                    var mo = (ManagementObject)o;
-                    st = mo["SystemType"].ToString();
-                }
-                return st;
+                var mo = (ManagementObject)o;
+                st = mo["SystemType"].ToString();
             }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return st;
         }
 
 
@@ -237,22 +187,15 @@ namespace BasicMmethodExtensionWeb.Helper
         /// <returns></returns>        
         public static string GetTotalPhysicalMemory()
         {
-            try
+            var st = string.Empty;
+            var mc = new ManagementClass("Win32_ComputerSystem");
+            var moc = mc.GetInstances();
+            foreach (var o in moc)
             {
-                var st = "";
-                var mc = new ManagementClass("Win32_ComputerSystem");
-                var moc = mc.GetInstances();
-                foreach (var o in moc)
-                {
-                    var mo = (ManagementObject)o;
-                    st = mo["TotalPhysicalMemory"].ToString();
-                }
-                return st;
+                var mo = (ManagementObject)o;
+                st = mo["TotalPhysicalMemory"].ToString();
             }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return st;
         }
     }
 }
