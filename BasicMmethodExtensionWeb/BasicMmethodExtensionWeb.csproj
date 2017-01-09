@@ -246,6 +246,7 @@
     <Compile Include="Helper\DnsAnalysis.cs" />
     <Compile Include="Helper\IPHelp.cs" />
     <Compile Include="Helper\Log4Helper.cs" />
+    <Compile Include="Helper\MailHelper.cs" />
     <Compile Include="Helper\ThoughtWorksQRCodeHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
