@@ -244,6 +244,7 @@
     <Compile Include="Helper\ComputerOperationHelper.cs" />
     <Compile Include="Helper\ConfigHelper.cs" />
     <Compile Include="Helper\DnsAnalysis.cs" />
+    <Compile Include="Helper\ImageWaterMarkHelper.cs" />
     <Compile Include="Helper\IPHelp.cs" />
     <Compile Include="Helper\Log4Helper.cs" />
     <Compile Include="Helper\MailHelper.cs" />
