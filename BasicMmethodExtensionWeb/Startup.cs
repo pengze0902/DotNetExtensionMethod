@@ -1,4 +1,6 @@
-﻿using Microsoft.Owin;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNet.SignalR;
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(BasicMmethodExtensionWeb.Startup))]
@@ -10,5 +12,5 @@ namespace BasicMmethodExtensionWeb
         {
             ConfigureAuth(app);
         }
-    }
+    } 
 }
