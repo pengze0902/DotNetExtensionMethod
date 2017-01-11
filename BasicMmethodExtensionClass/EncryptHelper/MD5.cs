@@ -13,7 +13,7 @@
         {
             var hashPasswordForStoringInConfigFile = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(s, "md5");
             if (hashPasswordForStoringInConfigFile != null)
-                s = hashPasswordForStoringInConfigFile.ToString();
+                s = hashPasswordForStoringInConfigFile;
             return s.ToUpper();
         }
 
@@ -25,7 +25,7 @@
         {
             var hashPasswordForStoringInConfigFile = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(s, "md5");
             if (hashPasswordForStoringInConfigFile != null)
-                s = hashPasswordForStoringInConfigFile.ToString();
+                s = hashPasswordForStoringInConfigFile;
             return s.ToLower();
         }
 

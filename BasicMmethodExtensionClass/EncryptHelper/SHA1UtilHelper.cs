@@ -30,9 +30,17 @@ namespace BasicMmethodExtensionClass.EncryptHelper
                 var hash = BitConverter.ToString(dataHashed).Replace("-", "");
                 return hash;
             }
-            catch (Exception ex)
+            catch (ArgumentNullException ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
+            }
+            catch (ArgumentException arex)
+            {
+                throw arex;
+            }
+            catch (ObjectDisposedException obex)
+            {
+                throw obex;
             }
 
         }

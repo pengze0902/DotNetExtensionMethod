@@ -245,9 +245,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\DateTimeHlper\BaseDateTimeExtensions.cs" />
+    <Compile Include="Helper\DateTimeHlper\BasePrimitivesExtensions.cs" />
     <Compile Include="Helper\ComputerOperationHelper.cs" />
     <Compile Include="Helper\ConfigHelper.cs" />
+    <Compile Include="Helper\DateTimeHlper\DateExtensions.cs" />
+    <Compile Include="Helper\DateTimeHlper\LongExtensions.cs" />
     <Compile Include="Helper\DnsAnalysis.cs" />
+    <Compile Include="Helper\DateTimeHlper\DoubleExtensions.cs" />
     <Compile Include="Helper\HtmlHelper.cs" />
     <Compile Include="Helper\ImageWaterMarkHelper.cs" />
     <Compile Include="Helper\IPHelp.cs" />
