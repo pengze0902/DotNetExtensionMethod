@@ -249,6 +249,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\DataTableHelper\DataMapHelper.cs" />
+    <Compile Include="Helper\DataTableHelper\DataTableHelper.cs" />
+    <Compile Include="Helper\DataTableHelper\DataTableListHelper.cs" />
+    <Compile Include="Helper\DataTableHelper\dtHelp.cs" />
+    <Compile Include="Helper\JsonSerializer\Getters.cs" />
+    <Compile Include="Helper\JsonSerializer\JSON.cs" />
+    <Compile Include="Helper\JsonSerializer\JsonParser.cs" />
+    <Compile Include="Helper\JsonSerializer\JsonSerializer.cs" />
+    <Compile Include="Helper\JsonSerializer\SafeDictionary.cs" />
     <Compile Include="Helper\DateTimeHlper\BaseDateTimeExtensions.cs" />
     <Compile Include="Helper\DateTimeHlper\BasePrimitivesExtensions.cs" />
     <Compile Include="Helper\ComputerOperationHelper.cs" />
