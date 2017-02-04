@@ -235,7 +235,7 @@ namespace BasicMmethodExtensionWeb.Helper.DataTableHelper
 
 
         /// <summary>
-        /// Datatable 转 List<Dictionary<string, object>
+        /// Datatable 转 List<Dictionary><string, object>
         /// </summary>
         /// <param name="table"></param>
         /// <returns></returns>

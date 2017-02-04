@@ -93,6 +93,7 @@
     <Compile Include="DBHelper\DapperForNet\SQL\QueryOrder.cs" />
     <Compile Include="DBHelper\DapperForNet\SQL\SqlQuery.cs" />
     <Compile Include="EncryptHelper\Base64.cs" />
+    <Compile Include="EncryptHelper\BigInteger.cs" />
     <Compile Include="EncryptHelper\Cryptography.cs" />
     <Compile Include="EncryptHelper\DESEncrypt.cs" />
     <Compile Include="EncryptHelper\EncryptHelper.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="EncryptHelper\MD5.cs" />
     <Compile Include="EncryptHelper\MD5UtilHelper.cs" />
     <Compile Include="EncryptHelper\RC4CryptHelper.cs" />
+    <Compile Include="EncryptHelper\RSAHelper.cs" />
     <Compile Include="EncryptHelper\SHA1UtilHelper.cs" />
     <Compile Include="EncryptHelper\Sha256.cs" />
     <Compile Include="IOHelper\FileOrDirHelper\DirFile.cs" />
