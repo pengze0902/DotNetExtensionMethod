@@ -93,6 +93,18 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MongoDB.Bson, Version=1.8.2.34, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=1.8.2.34, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client, Version=3.6.5.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\RabbitMQ.Client.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.103.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -273,6 +285,14 @@
     <Compile Include="Helper\IPHelp.cs" />
     <Compile Include="Helper\Log4Helper.cs" />
     <Compile Include="Helper\MailHelper.cs" />
+    <Compile Include="Helper\RabbitMQHelper\Extentions\TaskExtensions.cs" />
+    <Compile Include="Helper\RabbitMQHelper\IMessageBus.cs" />
+    <Compile Include="Helper\RabbitMQHelper\IMessagePublisher.cs" />
+    <Compile Include="Helper\RabbitMQHelper\IMessageSubscriber.cs" />
+    <Compile Include="Helper\RabbitMQHelper\MaintenanceBase.cs" />
+    <Compile Include="Helper\RabbitMQHelper\MessageBusBase.cs" />
+    <Compile Include="Helper\RabbitMQHelper\MessageBusData.cs" />
+    <Compile Include="Helper\RabbitMQHelper\MessageBus\RabbitMQMessageBus.cs" />
     <Compile Include="Helper\ThoughtWorksQRCodeHelper.cs" />
     <Compile Include="Helper\XHtmlElement.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -2820,6 +2840,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="DLL\log4net.dll" />
     <Content Include="DLL\log4net.xml" />
+    <Content Include="DLL\MongoDB.Bson.dll" />
+    <Content Include="DLL\MongoDB.Driver.dll" />
+    <Content Include="DLL\RabbitMQ.Client.dll" />
     <Content Include="DLL\ThoughtWorks.QRCode.dll" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
