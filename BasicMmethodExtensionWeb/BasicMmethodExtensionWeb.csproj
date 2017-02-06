@@ -249,6 +249,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CacheHelper.cs" />
     <Compile Include="Helper\DataTableHelper\DataMapHelper.cs" />
     <Compile Include="Helper\DataTableHelper\DataTableHelper.cs" />
     <Compile Include="Helper\DataTableHelper\DataTableListHelper.cs" />
